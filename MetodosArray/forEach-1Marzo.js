@@ -110,7 +110,6 @@ const otherFunction = (array) => {
       discount: 10,
     },
   ];
-
   let descountMar=(array)=>{
     let totaldesc
     array.forEach((item)=>{
@@ -132,3 +131,112 @@ const otherFunction = (array) => {
   /**Necesito saber si con mis ahorros me alcanza para cada producto, si me alcanza necesito saber
    * cuanto me sobraria, y sino necesito saber cuanto  me faltaría   1:24 01-03
    */
+
+  let shopMar=(array)=>{
+    let chancheCoins=0;
+    array.forEach(element => {
+      console.log(`El total es ${element.price} y pagas ${savings}`)
+      chancheCoins=Math.abs(savings-element.price)
+      if(element.price>savings){
+        console.log(`No te alcanza, necesitas ${chancheCoins} para completar tu compra`)
+      } else{
+        console.log(`Gracias por tu compra, este es tu cambio ${chancheCoins}`)
+      }
+    });
+  }
+   //shopMar(products)
+
+  let shopAntonioDestruct=(array)=>{
+    array.forEach(item=>{
+      let {price,name,discount} = item  //Destructuring, usamos los nombres de los atributos directos del array
+      let finalPrice=price-(price*(discount/100))
+      let result=savings-finalPrice
+      result < 0 ? console.log(`No te alcanza para el ${name}, necesitas ${Math.abs(result)} para acompletar tu compra`) : console.log(`Haz comprado ${name} y te ha sobrado ${Math.abs(result)}`)
+    })
+  }
+  shopAntonioDestruct(products)
+
+/*Necesito saber para cada viaje, cuánto tiempo me tomaría realizarlo*/
+let travels = [
+  {
+    averageSpeed: 100 /*km/h*/,
+    distance: 62139 /*km*/,
+    consumedFuel: 857 /*l*/,
+    tag: "Viaje 1",
+  },
+  {
+    averageSpeed: 84,
+    distance: 45485,
+    consumedFuel: 1400,
+    tag: "Viaje 2",
+  },
+  {
+    averageSpeed: 75,
+    distance: 94887,
+    consumedFuel: 986,
+    tag: "Viaje 3",
+  },
+];
+
+let TravelMar=(array)=>{
+  //Tiempo = distancia/velocidad
+  array.forEach(item=>{
+    let {averageSpeed,distance,tag}=item
+    let totalTime=distance/averageSpeed
+    console.log(`El tiempo que le toma a el ${tag} en llegar es ${totalTime}`)
+  })
+}
+TravelMar(travels)
+
+const iyari = (array) => {
+  array.forEach((travel) => {
+    let { averageSpeed, distance, tag } = travel;
+    console.log(
+      `El viaje ${tag} tomaría un tiempo de ${distance / averageSpeed} hrs`
+    );
+  });
+};
+iyari(travels);
+
+/**NEcesitamos saber el promedio  de distancia y combustible consumido 
+ * si realizamos todos los viajes
+ */
+const kim = (array)=>{
+  let totalDistance=0
+  let totalFuel=0
+  array.forEach(item=>{
+    let{distance,consumedFuel}=item
+    totalDistance +=distance
+    totalFuel+=consumedFuel
+  })
+  console.log(`La distancia promedio de todos los viajes  es de ${totalDistance/array.length} km. Y el consumo promedio del combustible  es de ${totalFuel/array.length} litros`)
+}
+
+kim(travels)
+
+let phrases = [
+  {
+    phrase: "Yo solo sé que no sé nada.",
+    author: "Sócrates",
+  },
+  {
+    phrase: "Hagas lo que hagas, hazlo bien.",
+    author: "Abraham Lincoln",
+  },
+  {
+    phrase: "El arte de vencer se aprende en las derrotas.",
+    author: "Simón Bolívar",
+  },
+];
+
+let capitaliMar=(array)=>{
+  array.forEach(item=>{
+    let{phrase,author}=item
+    console.log( `${phrase.charAt(0).toUpperCase()}`)
+
+  })
+}
+
+capitaliMar(phrases)
+
+// https://kampus.kodemia.com/clases?id=803330668&time=10123.186

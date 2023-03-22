@@ -19,7 +19,7 @@ numbers.forEach(printContent);
 /** forEach no me devuelve nada, almenos que se encapsule en una función que ejecute algo*/
 let scores=[5,6,7,8,2,1]
 
-const addScores=(scoresArray)=>{   /** Función addScores (Función flecha) tiene un argumento y regresa la suma de cada item con la ayuda del forEach  */
+const addScores=(scoresArray)=>{   /** Función addScore s (Función flecha) tiene un argumento y regresa la suma de cada item con la ayuda del forEach  */
     let total=0
     scoresArray.forEach((item) => total += item)
     return total
